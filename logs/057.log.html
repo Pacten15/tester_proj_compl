@@ -1,0 +1,21 @@
+<pre>
+Checking project structure...
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_function_definition_node(mml::function_definition_node*, int)':
+targets/type_checker.cpp:410:62: error: 'class mml::function_definition_node' has no member named 'outputType'
+  410 |   node->type(cdk::functional_type::create(input_types, node->outputType()));
+      |                                                              ^~~~~~~~~~
+targets/type_checker.cpp:412:24: error: 'make_symbol' is not a member of 'mml'
+  412 |   auto function = mml::make_symbol(node->type(), "@", 0, tPRIVATE);
+      |                        ^~~~~~~~~~~
+targets/type_checker.cpp:412:58: error: 'tPRIVATE' was not declared in this scope
+  412 |   auto function = mml::make_symbol(node->type(), "@", 0, tPRIVATE);
+      |                                                          ^~~~~~~~
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_variable_declaration_node(mml::variable_declaration_node*, int)':
+targets/type_checker.cpp:496:22: error: 'make_symbol' is not a member of 'mml'
+  496 |   auto symbol = mml::make_symbol(node->type(), id, (bool)node->initializer(), node->qualifier());
+      |                      ^~~~~~~~~~~
+targets/type_checker.cpp:522:28: error: 'tFOREIGN' was not declared in this scope
+  522 |   if (node->qualifier() == tFOREIGN) {
+      |                            ^~~~~~~~
+make: *** [Makefile:46: targets/type_checker.o] Error 1
+

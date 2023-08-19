@@ -1,0 +1,70 @@
+<pre>
+Checking project structure...
+mml_parser.y: warning: 8 shift/reduce conflicts [-Wconflicts-sr]
+mml_parser.y: note: rerun with option '-Wcounterexamples' to generate conflict counterexamples
+mml_parser.y:205.19-72: warning: rule useless in parser due to conflicts [-Wother]
+  205 | iffalse         : tELSE instruction                         { $$ = $2...
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mml_parser.y:206.19-100: warning: rule useless in parser due to conflicts [-Wother]
+  206 |                 | tELIF '(' expr ')' instruction            { $$ = ne...
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+mml_parser.y:207.19-109: warning: rule useless in parser due to conflicts [-Wother]
+  207 |                 | tELIF '(' expr ')' instruction iffalse    { $$ = ne...
+      |                   ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+targets/postfix_writer.cpp: In member function 'virtual void mml::postfix_writer::do_while_node(mml::while_node*, int)':
+targets/postfix_writer.cpp:287:3: error: '_whileIni' was not declared in this scope
+  287 |   _whileIni.push(++_lbl);
+      |   ^~~~~~~~~
+targets/postfix_writer.cpp:288:3: error: '_whileStep' was not declared in this scope
+  288 |   _whileStep.push(++_lbl);
+      |   ^~~~~~~~~~
+targets/postfix_writer.cpp:289:3: error: '_whileEnd' was not declared in this scope; did you mean 'do_while_node'?
+  289 |   _whileEnd.push(++_lbl);
+      |   ^~~~~~~~~
+      |   do_while_node
+targets/postfix_writer.cpp:294:3: error: '_inWhileIni' was not declared in this scope
+  294 |   _inWhileIni = true;
+      |   ^~~~~~~~~~~
+targets/postfix_writer.cpp:316:9: error: 'class mml::while_node' has no member named 'step'
+  316 |   node->step()->accept(this, lvl + 2);
+      |         ^~~~
+targets/postfix_writer.cpp:322:29: error: 'sts' has not been declared
+  322 |   os() << ";; WHILE end" << sts::endl;
+      |                             ^~~
+targets/postfix_writer.cpp: In member function 'virtual void mml::postfix_writer::do_input_node(mml::input_node*, int)':
+targets/postfix_writer.cpp:375:7: error: '_lvalueType' was not declared in this scope
+  375 |   if (_lvalueType == cdk::TYPE_DOUBLE) {
+      |       ^~~~~~~~~~~
+targets/postfix_writer.cpp: In member function 'virtual void mml::postfix_writer::do_nullptr_node(mml::nullptr_node*, int)':
+targets/postfix_writer.cpp:393:7: error: '_inFunctionBody' was not declared in this scope
+  393 |   if (_inFunctionBody) {
+      |       ^~~~~~~~~~~~~~~
+targets/postfix_writer.cpp: In member function 'virtual void mml::postfix_writer::do_break_node(mml::break_node*, int)':
+targets/postfix_writer.cpp:410:7: error: '_whileIni' was not declared in this scope
+  410 |   if (_whileIni.size() != 0) {
+      |       ^~~~~~~~~
+targets/postfix_writer.cpp:411:19: error: '_whileEnd' was not declared in this scope; did you mean 'do_while_node'?
+  411 |     _pf.JMP(mklbl(_whileEnd.top())); // jump to for end
+      |                   ^~~~~~~~~
+      |                   do_while_node
+targets/postfix_writer.cpp:413:5: error: 'error' was not declared in this scope; did you mean 'perror'?
+  413 |     error(node->lineno(), "'break' outside 'while'");
+      |     ^~~~~
+      |     perror
+targets/postfix_writer.cpp: In member function 'virtual void mml::postfix_writer::do_continue_node(mml::continue_node*, int)':
+targets/postfix_writer.cpp:417:7: error: 'whileIni' was not declared in this scope
+  417 |   if (whileIni.size() != 0) {
+      |       ^~~~~~~~
+targets/postfix_writer.cpp:418:19: error: '_whileStep' was not declared in this scope
+  418 |     _pf.JMP(mklbl(_whileStep.top())); // jump to next cycle
+      |                   ^~~~~~~~~~
+targets/postfix_writer.cpp:420:5: error: 'error' was not declared in this scope; did you mean 'perror'?
+  420 |     error(node->lineno(), "'continue' outside 'while'");
+      |     ^~~~~
+      |     perror
+targets/postfix_writer.cpp: In member function 'virtual void mml::postfix_writer::do_index_node(mml::index_node*, int)':
+targets/postfix_writer.cpp:432:9: error: '_function' was not declared in this scope
+  432 |     if (_function) {
+      |         ^~~~~~~~~
+make: *** [Makefile:46: targets/postfix_writer.o] Error 1
+

@@ -1,0 +1,126 @@
+<pre>
+Checking project structure...
+mml_parser.y: warning: 2 shift/reduce conflicts [-Wconflicts-sr]
+mml_parser.y: note: rerun with option '-Wcounterexamples' to generate conflict counterexamples
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_not_node(cdk::not_node*, int)':
+targets/type_checker.cpp:30:5: error: 'THROW_ERROR' was not declared in this scope
+   30 |     THROW_ERROR("invalid type in logical negation");
+      |     ^~~~~~~~~~~
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_and_node(cdk::and_node*, int)':
+targets/type_checker.cpp:34:3: error: 'ASSERT_UNSPEC' was not declared in this scope
+   34 |   ASSERT_UNSPEC;
+      |   ^~~~~~~~~~~~~
+targets/type_checker.cpp:36:19: error: 'make_primitive_type' is not a member of 'cdk'; did you mean 'primitive_type'?
+   36 |   node->type(cdk::make_primitive_type(4, cdk::TYPE_INT));
+      |                   ^~~~~~~~~~~~~~~~~~~
+      |                   primitive_type
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_or_node(cdk::or_node*, int)':
+targets/type_checker.cpp:39:3: error: 'ASSERT_UNSPEC' was not declared in this scope
+   39 |   ASSERT_UNSPEC;
+      |   ^~~~~~~~~~~~~
+targets/type_checker.cpp:41:19: error: 'make_primitive_type' is not a member of 'cdk'; did you mean 'primitive_type'?
+   41 |   node->type(cdk::make_primitive_type(4, cdk::TYPE_INT));
+      |                   ^~~~~~~~~~~~~~~~~~~
+      |                   primitive_type
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_integer_node(cdk::integer_node*, int)':
+targets/type_checker.cpp:47:3: error: 'ASSERT_UNSPEC' was not declared in this scope
+   47 |   ASSERT_UNSPEC;
+      |   ^~~~~~~~~~~~~
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_string_node(cdk::string_node*, int)':
+targets/type_checker.cpp:52:3: error: 'ASSERT_UNSPEC' was not declared in this scope
+   52 |   ASSERT_UNSPEC;
+      |   ^~~~~~~~~~~~~
+targets/type_checker.cpp: In member function 'void mml::type_checker::processBinaryExpression(cdk::binary_operation_node*, int)':
+targets/type_checker.cpp:74:3: error: 'ASSERT_UNSPEC' was not declared in this scope
+   74 |   ASSERT_UNSPEC;
+      |   ^~~~~~~~~~~~~
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_variable_node(cdk::variable_node*, int)':
+targets/type_checker.cpp:123:3: error: 'ASSERT_UNSPEC' was not declared in this scope
+  123 |   ASSERT_UNSPEC;
+      |   ^~~~~~~~~~~~~
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_rvalue_node(cdk::rvalue_node*, int)':
+targets/type_checker.cpp:135:3: error: 'ASSERT_UNSPEC' was not declared in this scope
+  135 |   ASSERT_UNSPEC;
+      |   ^~~~~~~~~~~~~
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_assignment_node(cdk::assignment_node*, int)':
+targets/type_checker.cpp:145:3: error: 'ASSERT_UNSPEC' was not declared in this scope
+  145 |   ASSERT_UNSPEC;
+      |   ^~~~~~~~~~~~~
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_address_of_node(mml::address_of_node*, int)':
+targets/type_checker.cpp:212:3: error: 'ASSERT_UNSPEC' was not declared in this scope
+  212 |   ASSERT_UNSPEC;
+      |   ^~~~~~~~~~~~~
+targets/type_checker.cpp:214:18: error: expected type-specifier
+  214 |   node->type(new cdk::make_reference_type(4, node->argument()->type())); */
+      |                  ^~~
+targets/type_checker.cpp:214:75: error: expected primary-expression before '/' token
+  214 |   node->type(new cdk::make_reference_type(4, node->argument()->type())); */
+      |                                                                           ^
+targets/type_checker.cpp:215:1: error: expected primary-expression before '}' token
+  215 | }
+      | ^
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_function_call_node(mml::function_call_node*, int)':
+targets/type_checker.cpp:218:3: error: 'ASSERT_UNSPEC' was not declared in this scope
+  218 |   ASSERT_UNSPEC;
+      |   ^~~~~~~~~~~~~
+targets/type_checker.cpp:220:41: error: invalid initialization of reference of type 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'} from expression of type 'cdk::expression_node*'
+  220 |   const std::string &id = node->function();
+      |                           ~~~~~~~~~~~~~~^~
+targets/type_checker.cpp:223:16: error: 'using std::__shared_ptr_access<mml::symbol, __gnu_cxx::_S_atomic, false, false>::element_type = class mml::symbol' {aka 'class mml::symbol'} has no member named 'isFunction'
+  223 |   if (!symbol->isFunction()) throw id + " not a function";
+      |                ^~~~~~~~~~
+targets/type_checker.cpp:226:1: error: expected primary-expression before '}' token
+  226 | }
+      | ^
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_index_node(mml::index_node*, int)':
+targets/type_checker.cpp:236:3: error: 'ASSERT_UNSPEC' was not declared in this scope
+  236 |   ASSERT_UNSPEC;
+      |   ^~~~~~~~~~~~~
+targets/type_checker.cpp:237:9: error: 'class mml::index_node' has no member named 'base'
+  237 |   node->base()->accept(this, lvl + 2);
+      |         ^~~~
+targets/type_checker.cpp:240:15: error: 'class mml::index_node' has no member named 'base'
+  240 |   if (! node->base()->is_typed(cdk::TYPE_POINTER)) {
+      |               ^~~~
+targets/type_checker.cpp:241:5: error: 'THROW_ERROR' was not declared in this scope
+  241 |     THROW_ERROR("pointer expression expected in pointer indexing");
+      |     ^~~~~~~~~~~
+targets/type_checker.cpp:245:5: error: 'THROW_ERROR' was not declared in this scope
+  245 |     THROW_ERROR("integer expected in index");
+      |     ^~~~~~~~~~~
+targets/type_checker.cpp:248:19: error: 'reference_type_cast' is not a member of 'cdk'; did you mean 'reference_type'?
+  248 |   auto ref = cdk::reference_type_cast(node->base()->type()); //TODO does this exist?
+      |                   ^~~~~~~~~~~~~~~~~~~
+      |                   reference_type
+targets/type_checker.cpp:248:45: error: 'class mml::index_node' has no member named 'base'
+  248 |   auto ref = cdk::reference_type_cast(node->base()->type()); //TODO does this exist?
+      |                                             ^~~~
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_input_node(mml::input_node*, int)':
+targets/type_checker.cpp:253:3: error: 'ASSERT_UNSPEC' was not declared in this scope
+  253 |   ASSERT_UNSPEC;
+      |   ^~~~~~~~~~~~~
+targets/type_checker.cpp:254:18: error: expected type-specifier before 'basic_type'
+  254 |   node->type(new basic_type(0, basic_type::TYPE_UNSPEC)); // TODO how does unspec propagate later on?
+      |                  ^~~~~~~~~~
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_sizeof_node(mml::sizeof_node*, int)':
+targets/type_checker.cpp:270:3: error: 'ASSERT_UNSPEC' was not declared in this scope
+  270 |   ASSERT_UNSPEC;
+      |   ^~~~~~~~~~~~~
+targets/type_checker.cpp:271:9: error: 'class mml::sizeof_node' has no member named 'expression'; did you mean 'expression_node'?
+  271 |   node->expression()->accept(this, lvl + 2);
+      |         ^~~~~~~~~~
+      |         expression_node
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_stack_allocation_node(mml::stack_allocation_node*, int)':
+targets/type_checker.cpp:276:3: error: 'ASSERT_UNSPEC' was not declared in this scope
+  276 |   ASSERT_UNSPEC;
+      |   ^~~~~~~~~~~~~
+targets/type_checker.cpp:280:19: error: 'make_reference_type' is not a member of 'cdk'; did you mean 'reference_type'?
+  280 |   node->type(cdk::make_reference_type(4, cdk::make_primitive_type(4, cdk::TYPE_INT)));
+      |                   ^~~~~~~~~~~~~~~~~~~
+      |                   reference_type
+targets/type_checker.cpp:280:47: error: 'make_primitive_type' is not a member of 'cdk'; did you mean 'primitive_type'?
+  280 |   node->type(cdk::make_reference_type(4, cdk::make_primitive_type(4, cdk::TYPE_INT)));
+      |                                               ^~~~~~~~~~~~~~~~~~~
+      |                                               primitive_type
+make: *** [Makefile:46: targets/type_checker.o] Error 1
+

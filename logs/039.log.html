@@ -1,0 +1,8 @@
+<pre>
+Checking project structure...
+targets/type_checker.cpp: In member function 'virtual void mml::type_checker::do_address_of_node(mml::address_of_node*, int)':
+targets/type_checker.cpp:17:9: error: 'class mml::address_of_node' has no member named 'argument'
+   17 |   node->argument()->accept(this, lvl + 2);
+      |         ^~~~~~~~
+make: *** [Makefile:46: targets/type_checker.o] Error 1
+

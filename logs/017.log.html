@@ -1,0 +1,110 @@
+<pre>
+Checking project structure...
+mml_parser.y: In function 'int yyparse(std::shared_ptr<cdk::compiler>)':
+mml_parser.y:86:190: error: no matching function for call to 'mml::function_definition_node::function_definition_node(int, bool, std::shared_ptr<cdk::primitive_type>, cdk::sequence_node*, mml::block_node*&)'
+   86 | program : tBEGIN dec_instr tEND { $$ = new mml::function_definition_node(LINE, true, cdk::primitive_type::create(4, cdk::TYPE_INT), new cdk::sequence_node(LINE), $2); }
+      |                                                                                                                                                                                              ^
+In file included from .auto/all_nodes.h:43,
+                 from mml_parser.y:8:
+./ast/function_definition_node.h:21:12: note: candidate: 'mml::function_definition_node::function_definition_node(int, std::shared_ptr<cdk::basic_type>, cdk::sequence_node*, mml::block_node*, bool)'
+   21 |     inline function_definition_node(int lineno, std::shared_ptr<cdk::basic_type> functionType, cdk::sequence_node *arguments,
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~
+./ast/function_definition_node.h:21:82: note:   no known conversion for argument 2 from 'bool' to 'std::shared_ptr<cdk::basic_type>'
+   21 |     inline function_definition_node(int lineno, std::shared_ptr<cdk::basic_type> functionType, cdk::sequence_node *arguments,
+      |                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+./ast/function_definition_node.h:15:9: note: candidate: 'mml::function_definition_node::function_definition_node(const mml::function_definition_node&)'
+   15 |   class function_definition_node: public cdk::expression_node {
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+./ast/function_definition_node.h:15:9: note:   candidate expects 1 argument, 5 provided
+./ast/function_definition_node.h:15:9: note: candidate: 'mml::function_definition_node::function_definition_node(mml::function_definition_node&&)'
+./ast/function_definition_node.h:15:9: note:   candidate expects 1 argument, 5 provided
+mml_parser.y:93:76: error: expected type-specifier
+   93 | declaration : tPUBLIC  type tIDENTIFIER ';'           { $$ = new mml::var_declaration_node(LINE,$1, $2, *$3, nullptr); delete $3;        }
+      |                                                                            ^~~
+mml_parser.y:94:76: error: expected type-specifier
+   94 |             | tPUBLIC  type tIDENTIFIER '=' expr ';'  { $$ = new mml::var_declaration_node(LINE, $1, $2, *$3, $5); delete $3;            }
+      |                                                                            ^~~
+mml_parser.y:95:76: error: expected type-specifier
+   95 |             | tPUBLIC  auto tIDENTIFIER '=' expr ';'  { $$ = new mml::var_declaration_node(LINE, $1, nullptr, *$3, $5); delete $3;       }
+      |                                                                            ^~~
+mml_parser.y:96:76: error: expected type-specifier
+   96 |             | tPUBLIC       tIDENTIFIER '=' expr ';'  { $$ = new mml::var_declaration_node(LINE, $1, nullptr, *$2, $4); delete $2;       }
+      |                                                                            ^~~
+mml_parser.y:97:76: error: expected type-specifier
+   97 |             | tFORWARD type tIDENTIFIER ';'           { $$ = new mml::var_declaration_node(LINE, $1, $2, *$3, nullptr); delete $3;       }
+      |                                                                            ^~~
+mml_parser.y:98:76: error: expected type-specifier
+   98 |             | tFOREIGN type tIDENTIFIER ';'           { $$ = new mml::var_declaration_node(LINE, tFOREIGN, $2, *$3, nullptr); delete $3; }
+      |                                                                            ^~~
+mml_parser.y:106:66: error: expected type-specifier
+  106 | var_decl :   auto tIDENTIFIER '=' expr ';'  { $$ = new mml::var_declaration_node(LINE, tPRIVATE, nullptr, *$2, $4); delete $2; }
+      |                                                                  ^~~
+mml_parser.y:108:66: error: expected type-specifier
+  108 |          |   type tIDENTIFIER '=' expr ';'  { $$ = new mml::var_declaration_node(LINE, tPRIVATE, $1, *$2, $4); delete $2;      }
+      |                                                                  ^~~
+mml_parser.y:114:57: error: expected type-specifier
+  114 | variable : type tIDENTIFIER        { $$ = new mml::var_declaration_node(LINE, tPRIVATE, $1, *$2, nullptr); delete $2; }
+      |                                                         ^~~
+mml_parser.y:132:192: error: no matching function for call to 'mml::function_definition_node::function_definition_node(int, bool, std::shared_ptr<cdk::basic_type>&, cdk::sequence_node*, mml::block_node*&)'
+  132 | fun_def : '(' ')' tRETURN_TYPE type block                { $$ = new mml::function_definition_node(LINE, false, $4, new cdk::sequence_node(LINE), $5); }
+      |                                                                                                                                                                                                ^
+./ast/function_definition_node.h:21:12: note: candidate: 'mml::function_definition_node::function_definition_node(int, std::shared_ptr<cdk::basic_type>, cdk::sequence_node*, mml::block_node*, bool)'
+   21 |     inline function_definition_node(int lineno, std::shared_ptr<cdk::basic_type> functionType, cdk::sequence_node *arguments,
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~
+./ast/function_definition_node.h:21:82: note:   no known conversion for argument 2 from 'bool' to 'std::shared_ptr<cdk::basic_type>'
+   21 |     inline function_definition_node(int lineno, std::shared_ptr<cdk::basic_type> functionType, cdk::sequence_node *arguments,
+      |                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+./ast/function_definition_node.h:15:9: note: candidate: 'mml::function_definition_node::function_definition_node(const mml::function_definition_node&)'
+   15 |   class function_definition_node: public cdk::expression_node {
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+./ast/function_definition_node.h:15:9: note:   candidate expects 1 argument, 5 provided
+./ast/function_definition_node.h:15:9: note: candidate: 'mml::function_definition_node::function_definition_node(mml::function_definition_node&&)'
+./ast/function_definition_node.h:15:9: note:   candidate expects 1 argument, 5 provided
+mml_parser.y:133:184: error: no matching function for call to 'mml::function_definition_node::function_definition_node(int, bool, std::shared_ptr<cdk::basic_type>&, cdk::sequence_node*&, mml::block_node*&)'
+  133 |         | '(' variables ')' tRETURN_TYPE type block      { $$ = new mml::function_definition_node(LINE, false, $5, $2, $6);                           }
+      |                                                                                                                                                                                        ^
+./ast/function_definition_node.h:21:12: note: candidate: 'mml::function_definition_node::function_definition_node(int, std::shared_ptr<cdk::basic_type>, cdk::sequence_node*, mml::block_node*, bool)'
+   21 |     inline function_definition_node(int lineno, std::shared_ptr<cdk::basic_type> functionType, cdk::sequence_node *arguments,
+      |            ^~~~~~~~~~~~~~~~~~~~~~~~
+./ast/function_definition_node.h:21:82: note:   no known conversion for argument 2 from 'bool' to 'std::shared_ptr<cdk::basic_type>'
+   21 |     inline function_definition_node(int lineno, std::shared_ptr<cdk::basic_type> functionType, cdk::sequence_node *arguments,
+      |                                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^~~~~~~~~~~~
+./ast/function_definition_node.h:15:9: note: candidate: 'mml::function_definition_node::function_definition_node(const mml::function_definition_node&)'
+   15 |   class function_definition_node: public cdk::expression_node {
+      |         ^~~~~~~~~~~~~~~~~~~~~~~~
+./ast/function_definition_node.h:15:9: note:   candidate expects 1 argument, 5 provided
+./ast/function_definition_node.h:15:9: note: candidate: 'mml::function_definition_node::function_definition_node(mml::function_definition_node&&)'
+./ast/function_definition_node.h:15:9: note:   candidate expects 1 argument, 5 provided
+mml_parser.y:162:105: error: no matching function for call to 'mml::return_node::return_node(int)'
+  162 |             | tRETURN ';'                                     { $$ = new mml::return_node(LINE);              }
+      |                                                                                                         ^
+In file included from .auto/all_nodes.h:52:
+./ast/return_node.h:15:12: note: candidate: 'mml::return_node::return_node(int, cdk::expression_node*)'
+   15 |     inline return_node(int lineno, cdk::expression_node * rValue) :
+      |            ^~~~~~~~~~~
+./ast/return_node.h:15:12: note:   candidate expects 2 arguments, 1 provided
+./ast/return_node.h:11:9: note: candidate: 'constexpr mml::return_node::return_node(const mml::return_node&)'
+   11 |   class return_node: public cdk::basic_node {
+      |         ^~~~~~~~~~~
+./ast/return_node.h:11:9: note:   no known conversion for argument 1 from 'int' to 'const mml::return_node&'
+./ast/return_node.h:11:9: note: candidate: 'constexpr mml::return_node::return_node(mml::return_node&&)'
+./ast/return_node.h:11:9: note:   no known conversion for argument 1 from 'int' to 'mml::return_node&&'
+mml_parser.y:164:103: error: no matching function for call to 'mml::stop_node::stop_node(int)'
+  164 |             | tSTOP ';'                                       { $$ = new mml::stop_node(LINE);                }
+      |                                                                                                       ^
+In file included from .auto/all_nodes.h:55:
+./ast/stop_node.h:15:12: note: candidate: 'mml::stop_node::stop_node(int, int)'
+   15 |     inline stop_node(int lineno, int stop) :
+      |            ^~~~~~~~~
+./ast/stop_node.h:15:12: note:   candidate expects 2 arguments, 1 provided
+./ast/stop_node.h:11:9: note: candidate: 'constexpr mml::stop_node::stop_node(const mml::stop_node&)'
+   11 |   class stop_node: public cdk::basic_node {
+      |         ^~~~~~~~~
+./ast/stop_node.h:11:9: note:   no known conversion for argument 1 from 'int' to 'const mml::stop_node&'
+./ast/stop_node.h:11:9: note: candidate: 'constexpr mml::stop_node::stop_node(mml::stop_node&&)'
+./ast/stop_node.h:11:9: note:   no known conversion for argument 1 from 'int' to 'mml::stop_node&&'
+mml_parser.y:206:63: error: expected type-specifier
+  206 |      | tREAD                       { $$ = new mml::read_node(LINE);               }
+      |                                                               ^~~
+make: *** [Makefile:40: mml_parser.tab.o] Error 1
+

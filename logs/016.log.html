@@ -1,0 +1,11 @@
+<pre>
+Checking project structure...
+mml_parser.y: warning: 3 shift/reduce conflicts [-Wconflicts-sr]
+mml_parser.y: note: rerun with option '-Wcounterexamples' to generate conflict counterexamples
+In file included from targets/frame_size_calculator.cpp:2:
+./targets/frame_size_calculator.h:33:10: fatal error: ast/visitor_decls.h: No such file or directory
+   33 | #include "ast/visitor_decls.h"       // automatically generated
+      |          ^~~~~~~~~~~~~~~~~~~~~
+compilation terminated.
+make: *** [Makefile:46: targets/frame_size_calculator.o] Error 1
+

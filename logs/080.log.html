@@ -1,0 +1,53 @@
+<pre>
+Checking project structure...
+mml_parser.y: warning: 1 nonterminal useless in grammar [-Wother]
+mml_parser.y: warning: 2 rules useless in grammar [-Wother]
+mml_parser.y:144.1-9: warning: nonterminal useless in grammar: opt_exprs [-Wother]
+  144 | opt_exprs :                                  {$$ = new cdk::sequence_...
+      | ^~~~~~~~~
+mml_parser.y: warning: 269 shift/reduce conflicts [-Wconflicts-sr]
+mml_parser.y: warning: 36 reduce/reduce conflicts [-Wconflicts-rr]
+mml_parser.y: note: rerun with option '-Wcounterexamples' to generate conflict counterexamples
+mml_parser.y: In function 'int yyparse(std::shared_ptr<cdk::compiler>)':
+mml_parser.y:97:157: error: no matching function for call to 'mml::function_def_node::function_def_node(int, int, std::nullptr_t, std::shared_ptr<cdk::basic_type>&, mml::block_node*&)'
+   97 | function  : '(' ')' tARROW type block                  {$$ = new mml::function_def_node(LINE, 0 ,nullptr, $4, $5);}
+      |                                                                                                                                                             ^
+In file included from .auto/all_nodes.h:44,
+                 from mml_parser.y:8:
+./ast/function_def_node.h:23:5: note: candidate: 'mml::function_def_node::function_def_node(int, int, std::shared_ptr<cdk::basic_type>, const std::string&, cdk::sequence_node*, mml::block_node*)'
+   23 |     function_def_node(int lineno, int qualifier, std::shared_ptr<cdk::basic_type> funType, const std::string &identifier,
+      |     ^~~~~~~~~~~~~~~~~
+./ast/function_def_node.h:23:5: note:   candidate expects 6 arguments, 5 provided
+./ast/function_def_node.h:17:5: note: candidate: 'mml::function_def_node::function_def_node(int, int, const std::string&, cdk::sequence_node*, mml::block_node*)'
+   17 |     function_def_node(int lineno, int qualifier, const std::string &identifier, cdk::sequence_node *arguments,
+      |     ^~~~~~~~~~~~~~~~~
+./ast/function_def_node.h:17:101: note:   no known conversion for argument 4 from 'std::shared_ptr<cdk::basic_type>' to 'cdk::sequence_node*'
+   17 |     function_def_node(int lineno, int qualifier, const std::string &identifier, cdk::sequence_node *arguments,
+      |                                                                                 ~~~~~~~~~~~~~~~~~~~~^~~~~~~~~
+./ast/function_def_node.h:10:9: note: candidate: 'mml::function_def_node::function_def_node(const mml::function_def_node&)'
+   10 |   class function_def_node: public cdk::expression_node {
+      |         ^~~~~~~~~~~~~~~~~
+./ast/function_def_node.h:10:9: note:   candidate expects 1 argument, 5 provided
+./ast/function_def_node.h:10:9: note: candidate: 'mml::function_def_node::function_def_node(mml::function_def_node&&)'
+./ast/function_def_node.h:10:9: note:   candidate expects 1 argument, 5 provided
+mml_parser.y:98:170: error: no matching function for call to 'mml::function_def_node::function_def_node(int, int, cdk::sequence_node*&, std::shared_ptr<cdk::basic_type>&, mml::block_node*&)'
+   98 |           | '('variables')' tARROW type block          {$$ = new mml::function_def_node(LINE, 0 ,$2, $5, $6);}
+      |                                                                                                                                                                          ^
+./ast/function_def_node.h:23:5: note: candidate: 'mml::function_def_node::function_def_node(int, int, std::shared_ptr<cdk::basic_type>, const std::string&, cdk::sequence_node*, mml::block_node*)'
+   23 |     function_def_node(int lineno, int qualifier, std::shared_ptr<cdk::basic_type> funType, const std::string &identifier,
+      |     ^~~~~~~~~~~~~~~~~
+./ast/function_def_node.h:23:5: note:   candidate expects 6 arguments, 5 provided
+./ast/function_def_node.h:17:5: note: candidate: 'mml::function_def_node::function_def_node(int, int, const std::string&, cdk::sequence_node*, mml::block_node*)'
+   17 |     function_def_node(int lineno, int qualifier, const std::string &identifier, cdk::sequence_node *arguments,
+      |     ^~~~~~~~~~~~~~~~~
+./ast/function_def_node.h:17:69: note:   no known conversion for argument 3 from 'cdk::sequence_node*' to 'const std::string&' {aka 'const std::__cxx11::basic_string<char>&'}
+   17 |     function_def_node(int lineno, int qualifier, const std::string &identifier, cdk::sequence_node *arguments,
+      |                                                  ~~~~~~~~~~~~~~~~~~~^~~~~~~~~~
+./ast/function_def_node.h:10:9: note: candidate: 'mml::function_def_node::function_def_node(const mml::function_def_node&)'
+   10 |   class function_def_node: public cdk::expression_node {
+      |         ^~~~~~~~~~~~~~~~~
+./ast/function_def_node.h:10:9: note:   candidate expects 1 argument, 5 provided
+./ast/function_def_node.h:10:9: note: candidate: 'mml::function_def_node::function_def_node(mml::function_def_node&&)'
+./ast/function_def_node.h:10:9: note:   candidate expects 1 argument, 5 provided
+make: *** [Makefile:40: mml_parser.tab.o] Error 1
+
