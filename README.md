@@ -38,7 +38,10 @@ Students whose result is **NO DELIVERY** (at each deadline) will be excluded fro
 
 If you fork this project to run your tests, you will need to adapt the `1-clone` script: currently, it tries to clone all the projects in the `prj` subgroup. In general, this is not allowed for regular users.
 
-## Support 
+To run these tests you shoud follow these intrunctions:
 
-Questions should be directed to [co23@hlt.inesc-id.pt](mailto:co23@hlt.inesc-id.pt).
+1º inside of the directory of this repository see if it exists the directories checked-out and checked-out-ref
+2º clone the repository of the project that is in my github public repositories (its called Proj_compiladores)
+3º create an empty folder checked-out-ref called 058
+4º go to the principal directory and do ./test-group.sh 058
 
